@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="health1.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/angular.min.js"></script>
+<script type="text/javascript" src="../js/fusioncharts.js"></script>
+<script type="text/javascript" src="../js/angular-fusioncharts.min.js"></script>
+<script type="text/javascript" src="../js/fusioncharts.charts.js"></script>
+<head>
+<style>
+
+body
+{
+background-color:#cccccc;
+}
+</style>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl" class="mainBody">
+
+
+<div class="w3-content w3-margin-top" >
+
+  
+  <div class="w3-row-padding">
+  
+    <div class="w3-third">
+    
+      <div class="blueBackground" w3-text-grey w3-card-4"  style="width:330%";>
+
+<div class="fullFaceBackground">
+
+<div class="floatLeft">
+<button type="button" class="btn btn-info">
+<span class="glyphicon glyphicon-align-left"></span>
+</button>
+</div>
+
+<div class="f1 headerTitle">{{personDetails.caption}}</div>
+
+ <div class="floatRight subTitle">{{personDetails.subCaption}} of goals</div>
+
+</div>
+
+                                               
+<table id="healReport" class="tableData">
+
+<tr>
+<td>
+<p>{{personDetails.healthReport.age}}</p>
+<p>Age</p>
+
+                                                                                </td>
+
+                                                                                <td>
+
+                                                                                                <p>{{personDetails.healthReport.bloodT}}
+
+                                                                                                <p>Blood t.</p>
+
+                                                                                </td>
+
+                                                                                <td>
+
+                                                                                                <p>{{personDetails.healthReport.bmi}}</p>
+
+                                                                                                <p>BMI</p>
+
+                                                                                </td>
+
+                                                                </tr>
+
+                                                                <tr>
+
+                                                                                <td>
+
+                                                                                                <p>{{personDetails.healthReport.height}}</p>
+
+                                                                                                <p>Height</p>
+
+                                                                                </td>
+
+                                                                                <td>
+
+                                                                                                <p>{{personDetails.healthReport.weight}}
+
+                                                                                                <p>Weight</p>
+
+                                                                                </td>
+
+                                                                                <td>
+
+                                                                                                <p>{{personDetails.healthReport.fat}}</p>
+
+                                                                                                <p>Fat</p>
+
+                                                                                </td>
+
+                                                                </tr>
+
+                                                </table>
+
+                                               
+
+  <div class="page2BottomSection">
+
+  <div>YOUR GOALS</div>
+
+  
+
+  <div>
+            
+  <div>
+
+  <span>Lose Weight</span>
+
+  <span>{{personDetails.healthGoals.actualWeight}} km/{{personDetails.healthGoals.targetWeight}} km</span>
+
+  </div>
+
+  
+
+  <div class="fullborder">
+
+  <div id="weightBar" class="myBar">{{CommonUtils.adjustBarWidth("weightBar", personDetails.healthGoals.actualWeight, personDetails.healthGoals.targetWeight)}}</div>
+
+  </div>
+
+  </div>
+
+  <div>
+
+  <div>
+
+  <span>Running Per week</span>
+
+ <span>{{personDetails.healthGoals.actualRunning}} km/{{personDetails.healthGoals.targetRunning}} km</span>
+
+ </div>
+
+ <div class="fullborder">
+
+  <div id="runningBar" class="myBar">{{CommonUtils.adjustBarWidth("runningBar", personDetails.healthGoals.actualRunning, personDetails.healthGoals.targetRunning)}}</div>
+
+ </div>
+
+ </div>
+
+  <div>
+
+  <div>
+
+  <span>Steps per day</span>
+
+  <span>{{personDetails.healthGoals.actualSteps}}/{{personDetails.healthGoals.targetSteps}}</span>
+
+  </div>
+
+ <div class="fullborder">
+
+ <div id="stepsBar" class="myBar">{{CommonUtils.adjustBarWidth("stepsBar", personDetails.healthGoals.actualSteps, personDetails.healthGoals.targetSteps)}}</div>
+
+ </div>
+
+ </div>
+
+ </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+                                <script type="text/javascript">
+
+                                                var app = angular.module('myApp', []);
+
+                                                app.controller('myCtrl', function($scope) {
+
+                                                                $scope.personDetails = {"caption":"Jana Novakova", "subCaption":"57%",
+
+                                                                                "healthReport" : {"age":"22", "bloodT":"A", "bmi":"20.4", "height":"172cm", "weight":"53kg", "fat":"21%"},
+
+                                                                                "healthGoals" : {"actualWeight" : "4.6", "targetWeight" : "8", "actualRunning" : "3.2", "targetRunning" : "10",
+
+                                                                                "actualSteps" : "3342", "targetSteps" : "10000"}};
+
+                                                               
+
+                                                                 $scope.CommonUtils = {
+
+                                                                                adjustBarWidth : function(elementId, actualValue, targetValue){
+
+                                                                                                document.getElementById(elementId).style.width = (actualValue/targetValue) * 100+"%";
+
+                                                                                                document.getElementById(elementId).style.backgroundColor = "#BAC5D0";
+
+                                                                                }
+
+                                                                }
+
+                                                });
+
+                                </script>
+
+                </body>
+
+</html>
